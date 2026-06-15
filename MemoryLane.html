@@ -1,55 +1,118 @@
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./Navbar.css" rel="stylesheet" />
-        <link href="./style.css" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
-            rel="stylesheet">
-        <title>A&K</title>
-    </head>
+    <link href="./Navbar.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        .timeline {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1rem 5rem 1rem;
+            position: relative;
+        }
+        /* .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 1px;
+            background: rgba(201,169,110,0.2);
+            transform: translateX(-50%);
+        } */
+        .memory-card {
+            position: relative;
+            padding: 2.5rem 3rem;
+            border: 1px solid rgba(245,245,240,0.08);
+            margin-bottom: 1px;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s, background 0.3s;
+        }
+        .memory-card:hover {
+            border-color: rgba(201,169,110,0.25);
+            background: rgba(201,169,110,0.04);
+        }
+        .memory-card.visible { opacity: 1; transform: translateY(0); }
+        .memory-date {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #c9a96e;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .memory-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.5rem;
+            letter-spacing: 0.03em;
+            color: #f5f5f0;
+            margin-bottom: 0.75rem;
+        }
+        .memory-card p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: rgba(245,245,240,0.5);
+            max-width: 100%;
+        }
+        @media (max-width: 480px) {
+            .timeline::before { display: none; }
+            .memory-card { padding: 2rem 1.5rem; }
+        }
+    </style>
+    <title>Memory Lane — A &amp; K</title>
+</head>
+<script src="./Navbar.js"></script>
+<body>
 
-    <script src="./Navbar.js"></script>
+<header>
+    <nav class="navbar">
+        <a href="./" class="nav-logo">A &amp; K</a>
+        <ul class="nav-menu">
+            <button class="nav-close-btn" aria-label="Close menu">&times;</button>
+            <li class="nav-item"><a href="./MemoryLane.html" class="nav-link">Memory Lane</a></li>
+            <li class="nav-item"><a href="./Letters.html" class="nav-link">Letters</a></li>
+            <li class="nav-item"><a href="./Gallery.html" class="nav-link">Gallery</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </nav>
+</header>
 
-    <body>
-        <header class="header">
-            <nav class="navbar">
-                <a href="./" class="nav-logo">A&K</a>
-                
-                <ul class="nav-menu">
-                <button class="nav-close-btn" aria-label="Close menu">&times;</button>
-                <li class="nav-item">
-                    <a href="./MemoryLane.html" class="nav-link">MEMORY LANE</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./Letters.html" class="nav-link">LETTERS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./Gallery.html" class="nav-link">GALLERY</a>
-                </li>
-                </ul>
-                
-                <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-                </div>
-            </nav>
-        </header>
-        <main>
-            <h1>Gallery</h1>
-        </main>
+<main>
+    <h1>Memory Lane</h1>
+    <p>The moments that made us</p>
+</main>
 
-        <footer>© A&K. Since 16th September 2025.</footer>
-        </body>
+<div class="gold-line" style="margin: 5rem auto 3rem auto;"></div>
 
-    </html>
+<div class="section">
+    <span class="section-label">Our Timeline</span>
+    <h2>Every chapter, remembered.</h2>
+    <p>The small moments are the big ones. Here's where we keep them.</p>
+</div>
+
+<div class="timeline">
+    <div class="memory-card">
+        <span class="memory-date">16 September 2025</span>
+        <h3>The Beginning</h3>
+        <p>The day everything changed. Add your story here - what happened, how it felt, why you'll never forget it.</p>
+    </div>
+    <div class="memory-card">
+        <span class="memory-date">Coming soon</span>
+        <h3>More memories to come&hellip;</h3>
+        <p>This is your space to fill with the moments that matter.</p>
+    </div>
+</div>
+
+<footer>© A &amp; K &nbsp;·&nbsp; Since 16th September 2025</footer>
+
+</body>
+</html>

@@ -5,57 +5,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const navCloseBtn = document.querySelector('.nav-close-btn');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Function to update navbar scrolled state on page scroll
-    function handleScroll() {
-        const scrollPosition = window.scrollY;
-        const topThreshold = 50;
-
-        if (scrollPosition > topThreshold) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 60) {
             navbar.classList.add("scrolled");
-        } else {
-            // Only remove "scrolled" if menu is not active
-            if (!navMenu.classList.contains("active")) {
-                navbar.classList.remove("scrolled");
-            }
-        }
-    }
-
-    // Scroll event to trigger navbar style update
-    window.addEventListener("scroll", handleScroll);
-
-    // Toggle mobile menu open/close
-    function mobileMenu() {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-
-        // Always keep navbar scrolled if menu is open
-        if (navMenu.classList.contains("active")) {
-            navbar.classList.add("scrolled");
-        } else if (window.scrollY < 50) {
+        } else if (!navMenu.classList.contains("active")) {
             navbar.classList.remove("scrolled");
         }
-    }
+    });
 
-    hamburger.addEventListener("click", mobileMenu);
+    hamburger?.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        if (navMenu.classList.contains("active")) navbar.classList.add("scrolled");
+        else if (window.scrollY < 60) navbar.classList.remove("scrolled");
+    });
 
-    // Close mobile menu when clicking close button (if exists)
-    if (navCloseBtn) {
-        navCloseBtn.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
-            // Remove scrolled only if scroll position is near top
-            if (window.scrollY < 50) {
-                navbar.classList.remove("scrolled");
-            }
-        });
-    }
+    navCloseBtn?.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+        if (window.scrollY < 60) navbar.classList.remove("scrolled");
+    });
 
-    // Close mobile menu when nav links clicked
     navLinks.forEach(n => n.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
-        if (window.scrollY < 50) {
-            navbar.classList.remove("scrolled");
-        }
+        if (window.scrollY < 60) navbar.classList.remove("scrolled");
     }));
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.section, .gold-line, .letter-card, .intro, .memory-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => observer.observe(el));
 });
